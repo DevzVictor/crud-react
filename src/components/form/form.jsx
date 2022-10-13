@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { api } from "../../utils/api/api";
 
 export function Form() {
   const [newAnime, setNewAnime] = useState();
@@ -15,11 +16,9 @@ export function Form() {
     // };
 
     setNewAnime({...newAnime, characters: []})
-
-    
-    // console.log(anime);
+    api.createAnime(newAnime);
   }
-  console.log(newAnime);
+
 
   return (
     <div className="form">

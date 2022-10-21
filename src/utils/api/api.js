@@ -7,7 +7,14 @@ export const api = {
       headers: new Headers({ "Content-Type": "application/json" }),
       body: JSON.stringify(anime),
     });
-    const newAnime = await response.JSON();
+    const newAnime = await response.json();
     return newAnime;
   },
+
+  getAllAnimes: async () => {
+    const response = await fetch(defaultUrl + "/");
+    const allAnimes = await response.json()
+    
+    return allAnimes;
+  }
 };

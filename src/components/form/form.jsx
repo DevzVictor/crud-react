@@ -4,7 +4,7 @@ import { api } from "../../utils/api/api";
 export function Form() {
   const [newAnime, setNewAnime] = useState();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     // const anime = {
@@ -15,8 +15,7 @@ export function Form() {
     //   characters: [],
     // };
 
-    setNewAnime({...newAnime, characters: []})
-    api.createAnime(newAnime);
+    await api.createAnime(newAnime);
   }
 
 

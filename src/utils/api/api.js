@@ -13,8 +13,17 @@ export const api = {
 
   getAllAnimes: async () => {
     const response = await fetch(defaultUrl + "/");
-    const allAnimes = await response.json()
-    
+    const allAnimes = await response.json();
+
     return allAnimes;
-  }
+  },
+
+  deleteAnime: async (animeId) => {
+    const response = await fetch(defaultUrl + "/delete/" + animeId, {
+      method: "DELETE",
+      headers: new Headers({ "Content-Type": "application/json" }),
+    });
+    const animeDeleted = await response.json();
+    return animeDeleted;
+  },
 };

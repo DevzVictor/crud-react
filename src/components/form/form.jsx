@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { api } from "../../utils/api/api";
 
-export function Form() {
-  const [newAnime, setNewAnime] = useState();
+export function Form({ getAll, handleModal }) {
+  const [newAnime, setNewAnime] = useState({ characters: [] });
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -16,8 +16,9 @@ export function Form() {
     // };
 
     await api.createAnime(newAnime);
+    await getAll();
+    handleModal();
   }
-
 
   return (
     <div className="form">
@@ -28,7 +29,7 @@ export function Form() {
             type="text"
             name="title"
             onChange={(event) => {
-              setNewAnime({...newAnime, title: event.target.value});
+              setNewAnime({ ...newAnime, title: event.target.value });
             }}
           ></input>
         </section>
@@ -38,7 +39,7 @@ export function Form() {
             type="text"
             name="protagonist"
             onChange={(event) => {
-              setNewAnime({...newAnime, protagonist: event.target.value});
+              setNewAnime({ ...newAnime, protagonist: event.target.value });
             }}
           ></input>
         </section>
@@ -48,7 +49,7 @@ export function Form() {
             type="text"
             name="gender"
             onChange={(event) => {
-              setNewAnime({...newAnime, gender: event.target.value});
+              setNewAnime({ ...newAnime, gender: event.target.value });
             }}
           ></input>
         </section>
@@ -58,7 +59,7 @@ export function Form() {
             type="number"
             name="year"
             onChange={(event) => {
-              setNewAnime({...newAnime, year: event.target.value});
+              setNewAnime({ ...newAnime, year: event.target.value });
             }}
           ></input>
         </section>

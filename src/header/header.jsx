@@ -24,7 +24,7 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-export function Header() {
+export function Header({getAll}) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function handleModal() {
@@ -32,13 +32,14 @@ export function Header() {
   }
 
   return (
-    <div>
-      <header>
-        <section>
-          <img src="./shuriken.png" alt="logo" height={40} width={40} />
+    <>
+      <header className="header-home">
+        <section className="header-section">
+          <img src="./shuriken.png" alt="logo" height="35" width="35" />
+          <h2 style={{ paddingLeft: "15px" }}>AnimeFlix</h2>
         </section>
         <section>
-          <button onClick={handleModal}>
+          <button className="modal-button" onClick={handleModal}>
             <GrFormAdd size={24} /> Add Anime
           </button>
         </section>
@@ -49,8 +50,8 @@ export function Header() {
         style={customStyles}
         contentLabel="Form Create"
       >
-        <Form />
+        <Form getAll={getAll} handleModal={handleModal}/>
       </Modal>
-    </div>
+    </>
   );
 }

@@ -52,7 +52,8 @@ export function Home() {
   function changeAnime(event, animeId) {
     event.preventDefault();
 
-    const anime = {
+    const updatedAnime = {
+      id: uniqueAnime.id,
       title: event.target.title.value,
       protagonist: event.target.protagonist.value,
       gender: event.target.gender.value,
@@ -62,13 +63,14 @@ export function Home() {
 
     const newAnimeList = animeList;
     newAnimeList.map((item, index) => {
-      if (item.id === animeId) {
-        newAnimeList.splice(index, 1, anime);
+      if (item.id === updatedAnime.id) {
+        newAnimeList.splice(index, 1, updatedAnime);
         setAnimeList(newAnimeList);
         handleModal();
       }
     });
     setEditAnime(false);
+    api.updateAnime(updatedAnime);
   }
 
   function handleModal() {
